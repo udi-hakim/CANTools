@@ -89,23 +89,25 @@ if __name__ == "__main__":
         s = serial.Serial(port=port, timeout=2)
         files_list = list_files(s)
     else:
-        print("Did not find Micropython boards")
+        print("Did not find MicroPython boards")
         exit()
     
-    if len(files_list):
-        n = 0
-        for file in files_list:
-            print(f"{n}: {file}")
-            n +=1
 
-        last_file = len(files_list)-1
-        choice = sys.maxsize
-        while(int(choice) > len(files_list)):
-            choice = input(f"Which file do you want to fetch? [0-{last_file}]: ")
-        
-        chosen_file = files_list[int(choice)]
-        print(f"Fetching {chosen_file}")
-        f = get_file(chosen_file)
-        print(f"{chosen_file} fetched!")
+    if len(files_list):
+        while(True):
+            n = 0
+            for file in files_list:
+                print(f"{n}: {file}")
+                n +=1
+
+            last_file = len(files_list)-1
+            choice = sys.maxsize
+            while(int(choice) > len(files_list)):
+                choice = input(f"Which file do you want to fetch? [0-{last_file}]: ")
+            
+            chosen_file = files_list[int(choice)]
+            print(f"Fetching {chosen_file}")
+            f = get_file(chosen_file)
+            print(f"{chosen_file} fetched!")
     else:
         print("Board is empty")
