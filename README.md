@@ -9,4 +9,4 @@ I tested this code on windows machine but need to try it on the Linux ASAP, WSL 
 This is by no mean a reference code, it's barely a POC material.
 
 use this tool by hitting:
-`Python3 mp_get_files.py`
+`python3 mp_get_files.py`
