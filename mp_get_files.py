@@ -81,7 +81,11 @@ if __name__ == "__main__":
 
     if len(ports):
         print(f"Available ports: {ports}")
-        port = input(f"Choose the MicroPython port you would like to use: ")
+        if len(ports) > 1:
+            port = input(f"Choose the MicroPython port you would like to use: ")
+        else:
+            port = ports[0]
+            
         s = serial.Serial(port=port, timeout=2)
         files_list = list_files(s)
     else:
@@ -89,7 +93,6 @@ if __name__ == "__main__":
         exit()
     
     if len(files_list):
-        
         n = 0
         for file in files_list:
             print(f"{n}: {file}")
